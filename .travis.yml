@@ -1,0 +1,25 @@
+---
+language: python
+python: "2.7"
+
+env:
+  - PHP_VERSION=5.5
+  - PHP_VERSION=5.6
+  - PHP_VERSION=7.0
+  - PHP_VERSION=hhvm
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  - pip install ansible
+  - cd tests
+
+script:
+  - "ansible-playbook playbook.yml --syntax-check"
+  - "ansible-playbook playbook.yml --connection=local --extra-vars="{\"php_version\": \"$PHP_VERSION\"}"
+  - >
+    ansible-playbook playbook.yml --connection=local --extra-vars="{\"php_version\": \"$PHP_VERSION\"}"
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)

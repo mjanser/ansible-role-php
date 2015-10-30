@@ -1,0 +1,9 @@
+---
+php_version: 5.6
+php_timezone: UTC
+
+php_fpm: true
+php_fpm_user: vagrant
+php_fpm_group: vagrant
+
+php_web_server: nginx

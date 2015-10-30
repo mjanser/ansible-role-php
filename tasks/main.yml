@@ -1,0 +1,32 @@
+---
+- name: "include variables for php"
+  include_vars: "php-{{ php_version }}.yml"
+
+- name: "ensure apt key for php packages is installed"
+  apt_key:
+    id: "{{ php_apt_key.id }}"
+    keyserver: "{{ php_apt_key.keyserver }}"
+  when: php_apt_key is defined
+
+- name: "ensure php ppa repository is installed"
+  sudo: yes
+  apt_repository:
+    repo: "{{ php_repo }}"
+    update_cache: yes
+  when: php_repo is defined
+
+- name: "ensure php packages are installed"
+  sudo: yes
+  apt:
+    name: "{{ item }}"
+  with_items: php_packages
+  notify: "restart php-fpm"
+
+- include: fpm.yml
+  when: php_fpm == true and php_version != "hhvm"
+
+- include: hhvm.yml
+  when: php_version == "hhvm"
+
+- include: config.yml
+  when: php_version != "hhvm"
