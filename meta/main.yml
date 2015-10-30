@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: mjanser
-  description: PHP for developers on Ubuntu
+  description: PHP on Ubuntu
   license: MIT
   min_ansible_version: 1.6
   platforms:
