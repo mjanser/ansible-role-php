@@ -24,7 +24,7 @@ if ! which ansible >/dev/null; then
     echo "Ansible installed"
 fi
 
-cd /vagrant/ansible-role-php-dev/tests
+cd /vagrant/ansible-role-php/tests
 ansible-playbook playbook.yml --connection=local --extra-vars="php_version=$PHP_VERSION"
 
 php --version

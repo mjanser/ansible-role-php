@@ -34,7 +34,7 @@ None
 
     - hosts: all
       roles:
-        - { role: mjanser.php-dev }
+        - { role: mjanser.php }
 
 ## License
 
