@@ -25,6 +25,10 @@ if ! which ansible >/dev/null; then
 fi
 
 cd /vagrant/ansible-role-php/tests
+
+echo -e "[defaults]\nroles_path = /vagrant" > /etc/ansible/ansible.cfg
+echo localhost > /etc/ansible/inventory
+
 ansible-playbook playbook.yml --connection=local --extra-vars="php_version=$PHP_VERSION"
 
 php --version

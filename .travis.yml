@@ -13,11 +13,12 @@ env:
 install:
   - pip install ansible
   - cd tests/
-  - "printf '[defaults]\\nroles_path = ../../\\nhostfile = inventory' > ansible.cfg"
+  - echo -e "[defaults]\nroles_path = ../../\nhostfile = inventory" > ansible.cfg
   - echo localhost > inventory
 
 script:
   - ansible-playbook playbook.yml --syntax-check
+  - ansible-playbook playbook.yml --connection=local --extra-vars="php_version=$PHP_VERSION"
   - ansible-playbook playbook.yml --connection=local --extra-vars="php_version=$PHP_VERSION"
   - >
     ansible-playbook playbook.yml --connection=local --extra-vars="php_version=$PHP_VERSION"
