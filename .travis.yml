@@ -17,4 +17,4 @@ install:
   - echo "localhost" > inventory
 
 script:
-  - tests/test.sh
+  - bash tests/test.sh
