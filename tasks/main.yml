@@ -9,14 +9,14 @@
   when: php_apt_key is defined
 
 - name: "ensure php ppa repository is installed"
-  sudo: yes
+  become: yes
   apt_repository:
     repo: "{{ php_repo }}"
     update_cache: yes
   when: php_repo is defined
 
 - name: "ensure php packages are installed"
-  sudo: yes
+  become: yes
   apt:
     name: "{{ item }}"
   with_items: php_packages

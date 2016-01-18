@@ -1,12 +1,12 @@
 ---
 - name: "ensure php-fpm packages are installed"
-  sudo: yes
+  become: yes
   apt:
     name: "{{ item }}"
   with_items: php_fpm_packages
 
 - name: "ensure php-fpm config listen is set"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?listen ="
@@ -14,7 +14,7 @@
   notify: "restart php-fpm"
 
 - name: "ensure php-fpm config user is set"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?user ="
@@ -22,7 +22,7 @@
   notify: "restart php-fpm"
 
 - name: "ensure php-fpm config group is set"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?group ="
@@ -30,7 +30,7 @@
   notify: "restart php-fpm"
 
 - name: "ensure php-fpm config listen owner is set"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?listen.owner ="
@@ -38,7 +38,7 @@
   notify: "restart php-fpm"
 
 - name: "ensure php-fpm config listen group is set"
-  sudo: yes
+  become: yes
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?listen.group ="
@@ -46,7 +46,7 @@
   notify: "restart php-fpm"
 
 - name: "ensure php-fpm is enabled"
-  sudo: yes
+  become: yes
   service:
     name: "{{ php_fpm_service }}"
     state: started
