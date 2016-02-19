@@ -1,5 +1,4 @@
 ---
-php_repo: "ppa:ondrej/php5"
 php_packages:
   - php5-common
   - php5-cli
@@ -10,11 +9,14 @@ php_packages:
   - php5-mysql
   - php5-readline
   - php5-sqlite
-  - php5-xdebug
-  - php5-redis
-php_config_dir: /etc/php5
+
+php_package_redis: php5-redis
+
+php_config_dir_cli: /etc/php5/cli/conf.d
+php_config_dir_fpm: /etc/php5/fpm/conf.d
+php_config_dir_apache: /etc/php5/apache/conf.d
 
 php_fpm_packages:
   - php5-fpm
 php_fpm_service: php5-fpm
-php_fpm_pool_file: "{{ php_config_dir }}/fpm/pool.d/www.conf"
+php_fpm_pool_file: "/etc/php5/fpm/pool.d/www.conf"

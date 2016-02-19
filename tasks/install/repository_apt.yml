@@ -1,0 +1,14 @@
+---
+- name: "ensure apt key for packages is installed"
+  apt_key:
+    id: "{{ php_apt_key.id }}"
+    keyserver: "{{ php_apt_key.keyserver }}"
+  when: php_apt_key is defined
+
+- name: "ensure ppa repository is installed"
+  apt_repository:
+    repo: "{{ php_repository }}"
+    update_cache: yes
+  when: php_repository is defined
+
+- include: packages.yml

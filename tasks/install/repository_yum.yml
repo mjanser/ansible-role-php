@@ -1,0 +1,15 @@
+---
+- name: "ensure yum/dnf repository is installed"
+  package:
+    name: "{{ php_repository }}"
+  when: php_repository is defined
+
+- name: "ensure yum/dnf repositories are enabled"
+  lineinfile:
+    dest: "/etc/yum.repos.d/{{ item }}.repo"
+    regexp: "^enabled="
+    line: "enabled=1"
+  when: php_repositories is defined
+  with_items: php_repositories
+
+- include: packages.yml

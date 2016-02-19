@@ -2,14 +2,6 @@
 language: python
 python: "2.7"
 
-sudo: required
-
-env:
-  - PHP_VERSION=5.5
-  - PHP_VERSION=5.6
-  - PHP_VERSION=7.0
-  - PHP_VERSION=hhvm
-
 install:
   - pip install ansible
   - cd tests/
@@ -17,4 +9,7 @@ install:
   - echo "localhost" > inventory
 
 script:
-  - bash test.sh
+  - ansible-playbook playbook.yml --syntax-check
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

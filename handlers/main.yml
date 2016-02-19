@@ -1,18 +1,10 @@
 ---
 - name: "restart php-fpm"
-  become: yes
   service:
     name: "{{ php_fpm_service }}"
     state: restarted
 
 - name: "restart hhvm"
-  become: yes
   service:
     name: hhvm
-    state: restarted
-
-- name: "restart web server"
-  become: yes
-  service:
-    name: "{{ php_web_server }}"
     state: restarted

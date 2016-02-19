@@ -1,52 +1,49 @@
 ---
 - name: "ensure php-fpm packages are installed"
-  become: yes
-  apt:
+  package:
     name: "{{ item }}"
   with_items: php_fpm_packages
 
-- name: "ensure php-fpm config listen is set"
-  become: yes
+- name: "ensure php-fpm listens on port 9000"
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?listen ="
     line: "listen = localhost:9000"
   notify: "restart php-fpm"
 
-- name: "ensure php-fpm config user is set"
-  become: yes
+- name: "ensure php-fpm runs as configured user"
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?user ="
     line: "user = {{ php_fpm_user }}"
+  when: php_fpm_user
   notify: "restart php-fpm"
 
-- name: "ensure php-fpm config group is set"
-  become: yes
+- name: "ensure php-fpm runs as configured group"
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?group ="
     line: "group = {{ php_fpm_group }}"
+  when: php_fpm_group
   notify: "restart php-fpm"
 
-- name: "ensure php-fpm config listen owner is set"
-  become: yes
+- name: "ensure php-fpm listens as configured user"
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?listen.owner ="
     line: "listen.owner = {{ php_fpm_user }}"
+  when: php_fpm_user
   notify: "restart php-fpm"
 
-- name: "ensure php-fpm config listen group is set"
-  become: yes
+- name: "ensure php-fpm config listens as configured group"
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?listen.group ="
     line: "listen.group = {{ php_fpm_group }}"
+  when: php_fpm_group
   notify: "restart php-fpm"
 
-- name: "ensure php-fpm is enabled"
-  become: yes
+- name: "ensure php-fpm is enabled and running"
   service:
     name: "{{ php_fpm_service }}"
     state: started

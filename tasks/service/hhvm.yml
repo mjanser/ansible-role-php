@@ -1,22 +1,21 @@
 ---
 - name: "ensure hhvm runs as configured user"
-  become: yes
   lineinfile:
     dest: "{{ php_hhvm_service_config_file }}"
     regexp: "^#?RUN_AS_USER="
     line: "RUN_AS_USER=\"{{ php_fpm_user }}\""
+  when: php_fpm_user
   notify: "restart hhvm"
 
 - name: "ensure hhvm runs as configured group"
-  become: yes
   lineinfile:
     dest: "{{ php_hhvm_service_config_file }}"
     regexp: "^#?RUN_AS_GROUP="
     line: "RUN_AS_GROUP=\"{{ php_fpm_group }}\""
+  when: php_fpm_group
   notify: "restart hhvm"
 
-- name: "ensure hhvm config listen is set"
-  become: yes
+- name: "ensure hhvm listens on port 9000"
   lineinfile:
     dest: "{{ php_hhvm_server_config_file }}"
     regexp: "^;?hhvm.server.port ="
@@ -24,31 +23,11 @@
   notify: "restart hhvm"
 
 - name: "ensure timezone for hhvm is configured"
-  become: yes
   lineinfile:
     dest: "{{ php_hhvm_config_file }}"
     line: "date.timezone = {{ php_timezone }}"
 
-- name: "ensure display_errors for hhvm is configured"
-  become: yes
-  lineinfile:
-    dest: "{{ php_hhvm_config_file }}"
-    line: "display_errors = On"
-
-- name: "ensure display_startup_errors for hhvm is configured"
-  become: yes
-  lineinfile:
-    dest: "{{ php_hhvm_config_file }}"
-    line: "display_startup_errors = On"
-
-- name: "ensure error_reporting for hhvm is configured"
-  become: yes
-  lineinfile:
-    dest: "{{ php_hhvm_config_file }}"
-    line: "error_reporting = E_ALL"
-
-- name: "ensure hhvm server is enabled"
-  become: yes
+- name: "ensure hhvm service is enabled and running"
   service:
     name: hhvm
     state: started

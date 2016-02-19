@@ -1,0 +1,10 @@
+---
+- name: ensure packages are installed
+  package:
+    name: "{{ item }}"
+  with_items: php_packages
+
+- name: ensure redis extension is installed
+  package:
+    name: "{{ php_package_redis }}"
+  when: php_redis and php_package_redis is defined

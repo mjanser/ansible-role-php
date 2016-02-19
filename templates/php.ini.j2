@@ -1,7 +1,9 @@
+{% if php_debug %}
 [PHP]
 display_errors = On
 display_startup_errors = On
 error_reporting = E_ALL
+{% endif %}
 
 [Date]
 date.timezone = {{ php_timezone }}

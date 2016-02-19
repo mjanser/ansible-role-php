@@ -1,0 +1,30 @@
+---
+- name: "ensure php is configured"
+  template:
+    src: php.ini.j2
+    dest: "{{ php_config_dir_main }}/90-custom.ini"
+  when: php_config_dir_main is defined
+
+- name: "ensure php cli is configured"
+  template:
+    src: php.ini.j2
+    dest: "{{ php_config_dir_cli }}/90-custom.ini"
+  when: php_config_dir_cli is defined
+
+- name: "ensure php-fpm is configured"
+  template:
+    src: php.ini.j2
+    dest: "{{ php_config_dir_fpm }}/90-custom.ini"
+  when: php_fpm == true and php_config_dir_fpm is defined
+  notify: "restart php-fpm"
+
+- stat:
+    path: "{{ php_config_dir_apache }}"
+  register: php_apache_config_directory
+  when: php_config_dir_apache is defined
+
+- name: "ensure php for apache is configured"
+  template:
+    src: php.ini.j2
+    dest: "{{ php_config_dir_apache }}/90-custom.ini"
+  when: php_config_dir_apache is defined and php_apache_config_directory.stat.exists == true

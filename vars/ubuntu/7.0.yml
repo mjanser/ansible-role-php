@@ -1,0 +1,21 @@
+---
+php_repository: "ppa:ondrej/php-7.0"
+php_packages:
+  - php-common
+  - php-cli
+  - php-curl
+  - php-intl
+  - php-json
+  - php-mysql
+  - php-sqlite3
+
+php_package_redis: php-redis
+
+php_config_dir_cli: /etc/php/7.0/cli/conf.d
+php_config_dir_fpm: /etc/php/7.0/fpm/conf.d
+php_config_dir_apache: /etc/php/7.0/apache/conf.d
+
+php_fpm_packages:
+  - php-fpm
+php_fpm_service: php7.0-fpm
+php_fpm_pool_file: "/etc/php/7.0/fpm/pool.d/www.conf"

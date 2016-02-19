@@ -2,3 +2,5 @@
 - hosts: all
   roles:
     - ansible-role-php
+  vars:
+    php_redis: true

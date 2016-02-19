@@ -1,9 +1,10 @@
 ---
-php_version: 5.6
+php_version: ~
+
 php_timezone: UTC
+php_debug: false
+php_redis: false
 
 php_fpm: true
-php_fpm_user: vagrant
-php_fpm_group: vagrant
-
-php_web_server: nginx
+php_fpm_user: ~
+php_fpm_group: ~

@@ -1,0 +1,21 @@
+---
+php_repository: "http://rpms.remirepo.net/fedora/remi-release-{{ ansible_distribution_version }}.rpm"
+php_repositories:
+  - remi
+  - remi-php70
+
+php_packages:
+  - php-common
+  - php-cli
+  - php-intl
+  - php-mcrypt
+  - php-pdo
+
+php_package_redis: php-pecl-redis
+
+php_config_dir_main: /etc/php.d
+
+php_fpm_packages:
+  - php-fpm
+php_fpm_service: php-fpm
+php_fpm_pool_file: "/etc/php-fpm.d/www.conf"
