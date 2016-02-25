@@ -2,7 +2,7 @@
 - name: "ensure php-fpm packages are installed"
   package:
     name: "{{ item }}"
-  with_items: php_fpm_packages
+  with_items: "{{ php_fpm_packages }}"
 
 - name: "ensure php-fpm listens on port 9000"
   lineinfile:

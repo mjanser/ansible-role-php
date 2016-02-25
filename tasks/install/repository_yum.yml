@@ -10,6 +10,6 @@
     regexp: "^enabled="
     line: "enabled=1"
   when: php_repositories is defined
-  with_items: php_repositories
+  with_items: "{{ php_repositories }}"
 
 - include: packages.yml
