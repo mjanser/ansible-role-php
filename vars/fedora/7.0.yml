@@ -7,9 +7,18 @@ php_repositories:
 php_packages:
   - php-common
   - php-cli
+  - php-bcmath
+  - php-gd
+  - php-gmp
+  - php-imap
   - php-intl
+  - php-ldap
+  - php-mbstring
   - php-mcrypt
   - php-pdo
+  - php-xml
+  - php-pecl-imagick
+  - php-pecl-zip
 
 php_package_redis: php-pecl-redis
 
