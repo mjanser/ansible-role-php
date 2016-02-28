@@ -6,5 +6,8 @@ php_debug: false
 php_redis: false
 
 php_fpm: true
+php_fpm_socket: ~
 php_fpm_user: ~
 php_fpm_group: ~
+
+php_hhvm_port: 9000

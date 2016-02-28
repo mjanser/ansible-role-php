@@ -15,11 +15,11 @@
   when: php_fpm_group
   notify: "restart hhvm"
 
-- name: "ensure hhvm listens on port 9000"
+- name: "ensure hhvm listens on configured port"
   lineinfile:
     dest: "{{ php_hhvm_server_config_file }}"
     regexp: "^;?hhvm.server.port ="
-    line: "hhvm.server.port = 9000"
+    line: "hhvm.server.port = {{ php_hhvm_port }}"
   notify: "restart hhvm"
 
 - name: "ensure timezone for hhvm is configured"

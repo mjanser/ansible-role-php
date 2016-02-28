@@ -24,3 +24,6 @@
 
 - include: config/hhvm.yml
   when: "php_version == 'hhvm'"
+
+- include: webserver/nginx.yml
+  when: "php_fpm or php_version == 'hhvm'"

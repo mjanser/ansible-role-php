@@ -4,11 +4,12 @@
     name: "{{ item }}"
   with_items: "{{ php_fpm_packages }}"
 
-- name: "ensure php-fpm listens on port 9000"
+- name: "ensure php-fpm listens on configured socket"
   lineinfile:
     dest: "{{ php_fpm_pool_file }}"
     regexp: "^;?listen ="
-    line: "listen = localhost:9000"
+    line: "listen = {{ php_fpm_socket }}"
+  when: php_fpm_socket
   notify: "restart php-fpm"
 
 - name: "ensure php-fpm runs as configured user"

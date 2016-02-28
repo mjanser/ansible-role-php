@@ -7,7 +7,7 @@ An Ansible role that installs PHP on Ubuntu or Fedora. The following versions of
 - PHP 7.0
 - HHVM
 
-HHVM or php-fpm will listen on port 9000.
+If nginx is installed on the system an upstream with the name `php-fpm` will be configured.
 
 ## Requirements
 
@@ -24,8 +24,11 @@ Available variables are listed below, along with default values:
     php_redis: false
 
     php_fpm: true
+    php_fpm_socket: ~
     php_fpm_user: ~
     php_fpm_group: ~
+
+    php_hhvm_port: 9000
 
 ## Dependencies
 
@@ -36,6 +39,16 @@ None
     - hosts: all
       roles:
         - { role: mjanser.php }
+
+To set up a development box with Vagrant you can use the following playbook.
+
+    - hosts: all
+      roles:
+        - { role: mjanser.php }
+      vars:
+        php_debug: true
+        php_fpm_user: vagrant
+        php_fpm_group: vagrant
 
 ### PHP versions
 

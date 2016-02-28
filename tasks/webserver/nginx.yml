@@ -1,0 +1,37 @@
+---
+- name: "check if nginx is installed"
+  stat:
+    path: /etc/nginx/conf.d
+  changed_when: false
+  register: nginx_conf_dir
+
+- name: "check if php-fpm upstream configuration for nginx exists"
+  stat:
+    path: /etc/nginx/conf.d/php-fpm.conf
+  changed_when: false
+  register: nginx_php_fpm_upstream_config
+
+- name: "get configured php-fpm socket"
+  shell: "grep '^listen =' {{ php_fpm_pool_file }} | cut -f3 -d' '"
+  changed_when: false
+  when: "php_version != 'hhvm' and php_fpm"
+  register: configured_php_fpm_socket
+
+- set_fact:
+    php_nginx_upstream_server: "{% if configured_php_fpm_socket.stdout.startswith('/') %}unix:{% endif %}{{ configured_php_fpm_socket.stdout }}"
+  when: "php_version != 'hhvm' and php_fpm"
+
+- name: "ensure php-fpm upstream configuration for nginx exists"
+  template:
+    src: nginx_upstream.conf.j2
+    dest: /etc/nginx/conf.d/php-fpm.conf
+  when: "nginx_conf_dir.stat.exists and not nginx_php_fpm_upstream_config.stat.exists"
+  notify: "restart nginx"
+
+- name: "ensure php-fpm upstream for nginx is configured"
+  lineinfile:
+    dest: /etc/nginx/conf.d/php-fpm.conf
+    regexp: "server.*"
+    line: "        server {{ php_nginx_upstream_server }};"
+  when: "php_version != 'hhvm' and nginx_conf_dir.stat.exists"
+  notify: "restart nginx"
