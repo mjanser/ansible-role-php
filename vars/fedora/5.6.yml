@@ -15,6 +15,7 @@ php_packages:
   - php-mbstring
   - php-mcrypt
   - php-pdo
+  - php-process
   - php-xml
   - php-pecl-imagick
   - php-pecl-zip
