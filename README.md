@@ -28,6 +28,13 @@ Available variables are listed below, along with default values:
     php_fpm_user: ~
     php_fpm_group: ~
 
+    php_fpm_pm: ~ # static, dynamic, ondemand
+    php_fpm_pm_max_children: ~
+    php_fpm_pm_start_servers: ~
+    php_fpm_pm_min_spare_servers: ~
+    php_fpm_pm_max_spare_servers: ~
+    php_fpm_pm_process_idle_timeout: ~
+
     php_hhvm_port: 9000
 
 ## Dependencies

@@ -44,6 +44,28 @@
   when: php_fpm_group
   notify: "restart php-fpm"
 
+- name: "ensure php-fpm sets environment variables"
+  lineinfile:
+    dest: "{{ php_fpm_pool_file }}"
+    regexp: "^;?env\\[PATH\\] ="
+    line: "env[PATH] = /usr/local/bin:/usr/bin:/bin"
+  notify: "restart php-fpm"
+
+- name: "ensure php-fpm process manager is configured"
+  lineinfile:
+    dest: "{{ php_fpm_pool_file }}"
+    regexp: "^;?{{ item.config }} ="
+    line: "{{ item.config }} = {{ item.value }}"
+  when: item.value
+  notify: "restart php-fpm"
+  with_items:
+    - { config: "pm", value: "{{ php_fpm_pm }}" }
+    - { config: "pm.max_children", value: "{{ php_fpm_pm_max_children }}" }
+    - { config: "pm.start_servers", value: "{{ php_fpm_pm_start_servers }}" }
+    - { config: "pm.min_spare_servers", value: "{{ php_fpm_pm_min_spare_servers }}" }
+    - { config: "pm.max_spare_servers", value: "{{ php_fpm_pm_max_spare_servers }}" }
+    - { config: "pm.process_idle_timeout", value: "{{ php_fpm_pm_process_idle_timeout }}" }
+
 - name: "ensure php-fpm is enabled and running"
   service:
     name: "{{ php_fpm_service }}"

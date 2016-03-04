@@ -4,3 +4,6 @@
     - ansible-role-php
   vars:
     php_redis: true
+    php_fpm_pm: ondemand
+    php_fpm_pm_max_children: 5
+    php_fpm_pm_process_idle_timeout: 5s
