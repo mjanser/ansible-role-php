@@ -18,6 +18,7 @@ php_packages:
   - php-pdo
   - php-process
   - php-xml
+  - php-pecl-apcu
   - php-pecl-imagick
   - php-pecl-zip
 

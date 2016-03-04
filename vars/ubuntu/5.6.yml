@@ -6,7 +6,6 @@ php_packages:
   - php5-curl
   - php5-gd
   - php5-gmp
-  - php5-imagick
   - php5-imap
   - php5-intl
   - php5-json
@@ -16,6 +15,8 @@ php_packages:
   - php5-readline
   - php5-sqlite
   - php5-xsl
+  - php5-apcu
+  - php5-imagick
 
 php_package_redis: php5-redis
 
