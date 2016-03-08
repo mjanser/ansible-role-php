@@ -17,6 +17,7 @@ php_packages:
   - php-mcrypt
   - php-pdo
   - php-process
+  - php-soap
   - php-xml
   - php-pecl-apcu
   - php-pecl-imagick

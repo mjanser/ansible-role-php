@@ -13,6 +13,7 @@ php_packages:
   - php7.0-mcrypt
   - php7.0-mysql
   - php7.0-readline
+  - php7.0-soap
   - php7.0-sqlite3
   - php7.0-xsl
   - php-apcu
