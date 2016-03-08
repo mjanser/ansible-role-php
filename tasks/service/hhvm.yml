@@ -4,7 +4,7 @@
     dest: "{{ php_hhvm_service_config_file }}"
     regexp: "^#?RUN_AS_USER="
     line: "RUN_AS_USER=\"{{ php_fpm_user }}\""
-  when: php_fpm_user
+  when: php_fpm_user is not none
   notify: "restart hhvm"
 
 - name: "ensure hhvm runs as configured group"
@@ -12,7 +12,7 @@
     dest: "{{ php_hhvm_service_config_file }}"
     regexp: "^#?RUN_AS_GROUP="
     line: "RUN_AS_GROUP=\"{{ php_fpm_group }}\""
-  when: php_fpm_group
+  when: php_fpm_group is not none
   notify: "restart hhvm"
 
 - name: "ensure hhvm listens on configured port"
