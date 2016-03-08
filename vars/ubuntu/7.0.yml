@@ -17,6 +17,7 @@ php_packages:
   - php7.0-soap
   - php7.0-sqlite3
   - php7.0-xsl
+  - php7.0-zip
   - php-apcu
   - php-imagick
 
