@@ -16,5 +16,3 @@ php_fpm_pm_start_servers: ~
 php_fpm_pm_min_spare_servers: ~
 php_fpm_pm_max_spare_servers: ~
 php_fpm_pm_process_idle_timeout: ~
-
-php_hhvm_port: 9000

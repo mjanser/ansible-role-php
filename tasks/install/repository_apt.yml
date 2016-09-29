@@ -10,5 +10,3 @@
     repo: "{{ php_repository }}"
     update_cache: yes
   when: php_repository is defined
-
-- include: packages.yml

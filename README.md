@@ -5,7 +5,6 @@ An Ansible role that installs PHP on Ubuntu or Fedora. The following versions of
 - PHP 5.5
 - PHP 5.6
 - PHP 7.0
-- HHVM
 
 If nginx is installed on the system an upstream with the name `php-fpm` will be configured.
 
@@ -35,8 +34,6 @@ Available variables are listed below, along with default values:
     php_fpm_pm_max_spare_servers: ~
     php_fpm_pm_process_idle_timeout: ~
 
-    php_hhvm_port: 9000
-
 ## Dependencies
 
 None
@@ -64,10 +61,6 @@ This Ansible role supports the installation of different PHP versions. By defaul
 Installation of a specific version:
 
     php_version: 7.0
-
-Installation of HHVM:
-
-    php_version: hhvm
 
 ## License
 

@@ -1,7 +1,7 @@
 ---
 - hosts: all
   roles:
-    - ansible-role-php
+    - vagrant
   vars:
     php_redis: true
     php_fpm_user: vagrant

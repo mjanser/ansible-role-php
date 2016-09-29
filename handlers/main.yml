@@ -3,8 +3,3 @@
   service:
     name: "{{ php_fpm_service }}"
     state: restarted
-
-- name: "restart hhvm"
-  service:
-    name: hhvm
-    state: restarted

@@ -4,26 +4,18 @@
     - "{{ ansible_distribution|lower }}/{{ php_version }}.yml"
     - "{{ ansible_distribution|lower }}/dist.yml"
 
-- include: install/packages.yml
-  when: not php_version
-
 - include: install/repository_apt.yml
   when: ansible_pkg_mgr == 'apt' and php_version
 
 - include: install/repository_yum.yml
   when: "ansible_pkg_mgr in ['yum', 'dnf'] and php_version"
 
-- include: service/fpm.yml
-  when: "php_fpm == true and php_version != 'hhvm'"
+- include: install/packages.yml
 
-- include: service/hhvm.yml
-  when: "php_version == 'hhvm'"
+- include: fpm.yml
+  when: php_fpm
 
-- include: config/php.yml
-  when: "php_version != 'hhvm'"
-
-- include: config/hhvm.yml
-  when: "php_version == 'hhvm'"
+- include: config.yml
 
 - include: webserver/nginx.yml
-  when: "php_fpm or php_version == 'hhvm'"
+  when: php_fpm
