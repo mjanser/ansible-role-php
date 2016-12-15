@@ -1,0 +1,33 @@
+---
+php_repository: "ppa:ondrej/php"
+php_packages:
+  - php7.1-common
+  - php7.1-cli
+  - php7.1-curl
+  - php7.1-gd
+  - php7.1-gmp
+  - php7.1-imap
+  - php7.1-intl
+  - php7.1-json
+  - php7.1-ldap
+  - php7.1-mbstring
+  - php7.1-mcrypt
+  - php7.1-mysql
+  - php7.1-readline
+  - php7.1-soap
+  - php7.1-sqlite3
+  - php7.1-xsl
+  - php7.1-zip
+  - php7.1-apcu
+  - php7.1-imagick
+
+php_package_redis: php7.1-redis
+
+php_config_dir_cli: /etc/php/7.1/cli/conf.d
+php_config_dir_fpm: /etc/php/7.1/fpm/conf.d
+php_config_dir_apache: /etc/php/7.1/apache/conf.d
+
+php_fpm_packages:
+  - php7.1-fpm
+php_fpm_service: php7.1-fpm
+php_fpm_pool_file: "/etc/php/7.1/fpm/pool.d/www.conf"
