@@ -19,3 +19,11 @@
 
 - include: webserver/nginx.yml
   when: php_fpm
+
+- name: ensure php binary is linked
+  file:
+    src: "{{ php_binary }}"
+    dest: /usr/bin/php
+    state: link
+    force: yes
+  when: php_binary is defined

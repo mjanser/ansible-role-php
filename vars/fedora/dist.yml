@@ -10,6 +10,7 @@ php_packages:
   - php-ldap
   - php-mbstring
   - php-mcrypt
+  - php-mysqlnd
   - php-pdo
   - php-process
   - php-soap

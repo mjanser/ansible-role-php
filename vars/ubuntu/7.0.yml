@@ -18,16 +18,16 @@ php_packages:
   - php7.0-sqlite3
   - php7.0-xsl
   - php7.0-zip
-  - php-apcu
-  - php-imagick
+  - php7.0-apcu
+  - php7.0-imagick
 
-php_package_redis: php-redis
+php_package_redis: php7.0-redis
 
 php_config_dir_cli: /etc/php/7.0/cli/conf.d
 php_config_dir_fpm: /etc/php/7.0/fpm/conf.d
 php_config_dir_apache: /etc/php/7.0/apache/conf.d
 
 php_fpm_packages:
-  - php-fpm
+  - php7.0-fpm
 php_fpm_service: php7.0-fpm
 php_fpm_pool_file: "/etc/php/7.0/fpm/pool.d/www.conf"

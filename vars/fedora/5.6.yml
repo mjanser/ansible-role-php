@@ -3,30 +3,33 @@ php_repository: "http://rpms.remirepo.net/fedora/remi-release-{{ ansible_distrib
 php_repositories:
   - remi
 
+php_binary: /usr/bin/php56
+
 php_packages:
-  - php-common
-  - php-cli
-  - php-bcmath
-  - php-gd
-  - php-gmp
-  - php-imap
-  - php-intl
-  - php-ldap
-  - php-mbstring
-  - php-mcrypt
-  - php-pdo
-  - php-process
-  - php-soap
-  - php-xml
-  - php-pecl-apcu
-  - php-pecl-imagick
-  - php-pecl-zip
+  - php56-php-common
+  - php56-php-cli
+  - php56-php-bcmath
+  - php56-php-gd
+  - php56-php-gmp
+  - php56-php-imap
+  - php56-php-intl
+  - php56-php-ldap
+  - php56-php-mbstring
+  - php56-php-mcrypt
+  - php56-php-mysqlnd
+  - php56-php-pdo
+  - php56-php-process
+  - php56-php-soap
+  - php56-php-xml
+  - php56-php-pecl-apcu
+  - php56-php-pecl-imagick
+  - php56-php-pecl-zip
 
-php_package_redis: php-pecl-redis
+php_package_redis: php56-php-pecl-redis
 
-php_config_dir_main: /etc/php.d
+php_config_dir_main: /opt/remi/php56/root/etc/php.d
 
 php_fpm_packages:
-  - php-fpm
-php_fpm_service: php-fpm
-php_fpm_pool_file: "/etc/php-fpm.d/www.conf"
+  - php56-php-fpm
+php_fpm_service: php56-php-fpm
+php_fpm_pool_file: /opt/remi/php56/root/etc/php-fpm.d/www.conf
