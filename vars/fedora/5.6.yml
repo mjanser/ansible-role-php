@@ -26,6 +26,7 @@ php_packages:
   - php56-php-pecl-zip
 
 php_package_redis: php56-php-pecl-redis
+php_package_composer: composer
 
 php_config_dir_main: /opt/remi/php56/root/etc/php.d
 

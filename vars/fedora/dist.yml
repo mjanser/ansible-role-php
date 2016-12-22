@@ -20,6 +20,7 @@ php_packages:
   - php-pecl-zip
 
 php_package_redis: php-pecl-redis
+php_package_composer: composer
 
 php_config_dir_main: /etc/php.d
 

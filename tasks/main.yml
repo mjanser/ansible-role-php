@@ -12,6 +12,9 @@
 
 - include: install/packages.yml
 
+- include: install/composer.yml
+  when: php_composer
+
 - include: fpm.yml
   when: php_fpm
 

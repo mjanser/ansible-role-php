@@ -27,6 +27,7 @@ php_packages:
   - php71-php-pecl-zip
 
 php_package_redis: php71-php-pecl-redis
+php_package_composer: composer
 
 php_config_dir_main: /etc/opt/remi/php71/php.d
 
