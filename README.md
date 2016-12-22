@@ -24,6 +24,7 @@ Available variables are listed below, along with default values:
     php_timezone: UTC
     php_debug: false
     php_redis: false
+    php_composer: true
 
     php_fpm: true
     php_fpm_socket: ~
@@ -54,6 +55,11 @@ If the variable `php_debug` is set to `true`, error reporting will be enabled.
 ### Redis
 
 The variable `php_redis` can be set to `true` to install the PHP extension for redis.
+
+### Composer
+
+By default [composer](https://getcomposer.org/) will be installed.
+This can be prevented with setting the variable `php_composer` to `false`.
 
 ### PHP-FPM
 
