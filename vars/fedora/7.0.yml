@@ -3,34 +3,32 @@ php_repository: "http://rpms.remirepo.net/fedora/remi-release-{{ ansible_distrib
 php_repositories:
   - remi
 
-php_binary: /usr/bin/php70
-
 php_packages:
-  - php70-php-common
-  - php70-php-cli
-  - php70-php-bcmath
-  - php70-php-gd
-  - php70-php-gmp
-  - php70-php-imap
-  - php70-php-intl
-  - php70-php-ldap
-  - php70-php-mbstring
-  - php70-php-mcrypt
-  - php70-php-mysqlnd
-  - php70-php-pdo
-  - php70-php-process
-  - php70-php-soap
-  - php70-php-xml
-  - php70-php-pecl-apcu
-  - php70-php-pecl-imagick
-  - php70-php-pecl-zip
+  - php-common
+  - php-cli
+  - php-bcmath
+  - php-gd
+  - php-gmp
+  - php-imap
+  - php-intl
+  - php-ldap
+  - php-mbstring
+  - php-mcrypt
+  - php-mysqlnd
+  - php-pdo
+  - php-process
+  - php-soap
+  - php-xml
+  - php-pecl-apcu
+  - php-pecl-imagick
+  - php-pecl-zip
 
-php_package_redis: php70-php-pecl-redis
+php_package_redis: php-pecl-redis
 php_package_composer: composer
 
-php_config_dir_main: /etc/opt/remi/php70/php.d
+php_config_dir_main: /etc/php.d
 
 php_fpm_packages:
-  - php70-php-fpm
-php_fpm_service: php70-php-fpm
-php_fpm_pool_file: /etc/opt/remi/php70/php-fpm.d/www.conf
+  - php-fpm
+php_fpm_service: php-fpm
+php_fpm_pool_file: "/etc/php-fpm.d/www.conf"

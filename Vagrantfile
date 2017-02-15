@@ -71,6 +71,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'shell' do |s|
     s.keep_color = true
     s.inline = <<SCRIPT
+PATH=/usr/local/bin:$PATH
 PHP_VERSION=$(hostname | cut -d- -f2,3 | sed "s/-/./")
 test $(hostname | cut -d- -f2) == "dist" && PHP_VERSION=
 
