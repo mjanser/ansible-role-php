@@ -30,6 +30,7 @@ Available variables are listed below, along with default values:
     php_fpm_socket: ~
     php_fpm_user: ~
     php_fpm_group: ~
+    php_fpm_acl_users: ~
 
     php_fpm_pm: ~ # static, dynamic, ondemand
     php_fpm_pm_max_children: ~
@@ -66,6 +67,8 @@ This can be prevented with setting the variable `php_composer` to `false`.
 PHP-FPM can be configured with the variables prefixed by `php_fpm`.
 The installation of PHP-FPM can also be disabled when setting the variable `php_fpm` to `false`.
 
+To give additional users access to the PHP-FPM socket, you can set the variable `php_fpm_acl_users`.
+
 ### PHP-FPM process management
 
 With the variables prefixed by `php_fpm_pm` the process manager of PHP-FPM can be configured.
@@ -90,6 +93,7 @@ To set up a development box with Vagrant you can use the following playbook.
         php_debug: true
         php_fpm_user: vagrant
         php_fpm_group: vagrant
+        php_fpm_acl_users: apache,nginx,vagrant
 
 ## License
 
