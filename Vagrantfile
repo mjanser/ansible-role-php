@@ -21,24 +21,24 @@ Vagrant.configure('2') do |config|
     vmconfig.vm.box = 'mjanser/fedora25-64-lxc'
   end
 
-  config.vm.define 'php-dist-ubuntu-trusty' do | vmconfig |
-    vmconfig.vm.hostname = 'php-dist-ubuntu-trusty'
-    vmconfig.vm.box = 'fgrehm/trusty64-lxc'
+  config.vm.define 'php-dist-ubuntu-xenial' do | vmconfig |
+    vmconfig.vm.hostname = 'php-dist-ubuntu-xenial'
+    vmconfig.vm.box = 'nhinds/xenial64'
   end
 
-  config.vm.define 'php-5-6-ubuntu-trusty' do | vmconfig |
-    vmconfig.vm.hostname = 'php-5-6-ubuntu-trusty'
-    vmconfig.vm.box = 'fgrehm/trusty64-lxc'
+  config.vm.define 'php-5-6-ubuntu-xenial' do | vmconfig |
+    vmconfig.vm.hostname = 'php-5-6-ubuntu-xenial'
+    vmconfig.vm.box = 'nhinds/xenial64'
   end
 
-  config.vm.define 'php-7-0-ubuntu-trusty' do | vmconfig |
-    vmconfig.vm.hostname = 'php-7-0-ubuntu-trusty'
-    vmconfig.vm.box = 'fgrehm/trusty64-lxc'
+  config.vm.define 'php-7-0-ubuntu-xenial' do | vmconfig |
+    vmconfig.vm.hostname = 'php-7-0-ubuntu-xenial'
+    vmconfig.vm.box = 'nhinds/xenial64'
   end
 
-  config.vm.define 'php-7-1-ubuntu-trusty' do | vmconfig |
-    vmconfig.vm.hostname = 'php-7-1-ubuntu-trusty'
-    vmconfig.vm.box = 'fgrehm/trusty64-lxc'
+  config.vm.define 'php-7-1-ubuntu-xenial' do | vmconfig |
+    vmconfig.vm.hostname = 'php-7-1-ubuntu-xenial'
+    vmconfig.vm.box = 'nhinds/xenial64'
   end
 
   config.vm.provision "ansible_local" do |ansible|
@@ -46,22 +46,22 @@ Vagrant.configure('2') do |config|
     ansible.groups = {
         'dist' => [
             'php-dist-fedora-25',
-            'php-dist-ubuntu-trusty',
+            'php-dist-ubuntu-xenial',
         ],
         'dist:vars' => {'php_version' => 'distribution'},
         '5.6' => [
             'php-5-6-fedora-25',
-            'php-5-6-ubuntu-trusty',
+            'php-5-6-ubuntu-xenial',
         ],
         '5.6:vars' => {'php_version' => '5.6'},
         '7.0' => [
             'php-7-0-fedora-25',
-            'php-7-0-ubuntu-trusty',
+            'php-7-0-ubuntu-xenial',
         ],
         '7.0:vars' => {'php_version' => '7.0'},
         '7.1' => [
             'php-7-1-fedora-25',
-            'php-7-1-ubuntu-trusty',
+            'php-7-1-ubuntu-xenial',
         ],
         '7.1:vars' => {'php_version' => '7.1'}
     }
