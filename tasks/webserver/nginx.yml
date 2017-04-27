@@ -16,6 +16,7 @@
   changed_when: false
   when: php_fpm
   register: configured_php_fpm_socket
+  check_mode: no
 
 - set_fact:
     php_nginx_upstream_server: "{% if configured_php_fpm_socket.stdout.startswith('/') %}unix:{% endif %}{{ configured_php_fpm_socket.stdout }}"
