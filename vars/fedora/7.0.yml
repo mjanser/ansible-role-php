@@ -15,6 +15,7 @@ php_packages:
   - php-mbstring
   - php-mcrypt
   - php-mysqlnd
+  - php-opcache
   - php-pdo
   - php-process
   - php-soap

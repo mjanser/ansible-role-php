@@ -23,6 +23,7 @@ Available variables are listed below, along with default values:
 
     php_timezone: UTC
     php_debug: false
+    php_opcache_validate: false
     php_redis: false
     php_composer: true
 
@@ -52,6 +53,11 @@ This role supports setting the default timezone of PHP with the variable `php_ti
 ### Debug
 
 If the variable `php_debug` is set to `true`, error reporting will be enabled.
+
+### OPCache
+
+By default the PHP OPCache does not validate the cache, which is good in production environment.
+The validation can be enabled with setting the variable `php_opcache_validate` to `true`.
 
 ### Redis
 

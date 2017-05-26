@@ -17,6 +17,7 @@ php_packages:
   - php56-php-mbstring
   - php56-php-mcrypt
   - php56-php-mysqlnd
+  - php56-php-opcache
   - php56-php-pdo
   - php56-php-process
   - php56-php-soap

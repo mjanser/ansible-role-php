@@ -13,6 +13,7 @@ php_packages:
   - php7.1-mbstring
   - php7.1-mcrypt
   - php7.1-mysql
+  - php7.1-opcache
   - php7.1-readline
   - php7.1-soap
   - php7.1-sqlite3
