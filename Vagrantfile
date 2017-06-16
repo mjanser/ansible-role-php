@@ -1,5 +1,5 @@
 Vagrant.configure('2') do |config|
-  config.vm.box = 'obnox/fedora25-64-lxc'
+  config.vm.box = 'mjanser/fedora25-64-lxc'
 
   config.vm.define 'php-dist-fedora-25' do | vmconfig |
     vmconfig.vm.hostname = 'php-dist-fedora-25'
@@ -19,6 +19,26 @@ Vagrant.configure('2') do |config|
   config.vm.define 'php-7-1-fedora-25' do | vmconfig |
     vmconfig.vm.hostname = 'php-7-1-fedora-25'
     vmconfig.vm.box = 'mjanser/fedora25-64-lxc'
+  end
+
+  config.vm.define 'php-dist-debian-jessie' do | vmconfig |
+    vmconfig.vm.hostname = 'php-dist-debian-jessie'
+    vmconfig.vm.box = 'debian/jessie64'
+  end
+
+  config.vm.define 'php-5-6-debian-jessie' do | vmconfig |
+    vmconfig.vm.hostname = 'php-5-6-debian-jessie'
+    vmconfig.vm.box = 'debian/jessie64'
+  end
+
+  config.vm.define 'php-7-0-debian-jessie' do | vmconfig |
+    vmconfig.vm.hostname = 'php-7-0-debian-jessie'
+    vmconfig.vm.box = 'debian/jessie64'
+  end
+
+  config.vm.define 'php-7-1-debian-jessie' do | vmconfig |
+    vmconfig.vm.hostname = 'php-7-1-debian-jessie'
+    vmconfig.vm.box = 'debian/jessie64'
   end
 
   config.vm.define 'php-dist-ubuntu-xenial' do | vmconfig |
@@ -46,26 +66,31 @@ Vagrant.configure('2') do |config|
     ansible.groups = {
         'dist' => [
             'php-dist-fedora-25',
+            'php-dist-debian-jessie',
             'php-dist-ubuntu-xenial',
         ],
         'dist:vars' => {'php_version' => 'distribution'},
         '5.6' => [
             'php-5-6-fedora-25',
+            'php-5-6-debian-jessie',
             'php-5-6-ubuntu-xenial',
         ],
         '5.6:vars' => {'php_version' => '5.6'},
         '7.0' => [
             'php-7-0-fedora-25',
+            'php-7-0-debian-jessie',
             'php-7-0-ubuntu-xenial',
         ],
         '7.0:vars' => {'php_version' => '7.0'},
         '7.1' => [
             'php-7-1-fedora-25',
+            'php-7-1-debian-jessie',
             'php-7-1-ubuntu-xenial',
         ],
         '7.1:vars' => {'php_version' => '7.1'}
     }
     ansible.sudo = true
+    ansible.install_mode = "pip"
   end
 
   config.vm.provision 'shell' do |s|

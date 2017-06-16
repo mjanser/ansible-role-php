@@ -1,11 +1,20 @@
 ---
+- name: "ensure apt can do https"
+  package:
+    name: apt-transport-https
+
 - name: "ensure apt key for packages is installed"
   apt_key:
     id: "{{ php_apt_key.id }}"
     keyserver: "{{ php_apt_key.keyserver }}"
-  when: php_apt_key is defined
+  when: php_apt_key is defined and not php_apt_key is string
 
-- name: "ensure ppa repository is installed"
+- name: "ensure apt key for packages is installed from file"
+  apt_key:
+    url: "{{ php_apt_key }}"
+  when: php_apt_key is defined and php_apt_key is string
+
+- name: "ensure apt repository is installed"
   apt_repository:
     repo: "{{ php_repository }}"
     update_cache: yes
