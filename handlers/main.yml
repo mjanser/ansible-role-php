@@ -3,3 +3,8 @@
   service:
     name: "{{ php_fpm_service }}"
     state: restarted
+
+- name: "restart nginx"
+  service:
+    name: nginx
+    state: restarted
