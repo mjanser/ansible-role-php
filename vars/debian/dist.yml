@@ -1,29 +1,30 @@
 ---
 php_packages:
-  - php5-common
-  - php5-cli
-  - php5-apcu
-  - php5-curl
-  - php5-gd
-  - php5-gmp
-  - php5-imagick
-  - php5-imap
-  - php5-intl
-  - php5-json
-  - php5-ldap
-  - php5-mcrypt
-  - php5-mysql
-  - php5-readline
-  - php5-sqlite
-  - php5-xsl
+  - php7.0-common
+  - php7.0-cli
+  - php7.0-apcu
+  - php7.0-curl
+  - php7.0-gd
+  - php7.0-gmp
+  - php7.0-imagick
+  - php7.0-imap
+  - php7.0-intl
+  - php7.0-json
+  - php7.0-ldap
+  - php7.0-mcrypt
+  - php7.0-mysql
+  - php7.0-readline
+  - php7.0-sqlite3
+  - php7.0-xsl
 
-php_package_redis: php5-redis
+php_package_redis: php7.0-redis
+php_package_composer: composer
 
-php_config_dir_cli: /etc/php5/cli/conf.d
-php_config_dir_fpm: /etc/php5/fpm/conf.d
-php_config_dir_apache: /etc/php5/apache/conf.d
+php_config_dir_cli: /etc/php/7.0/cli/conf.d
+php_config_dir_fpm: /etc/php/7.0/fpm/conf.d
+php_config_dir_apache: /etc/php/7.0/apache/conf.d
 
 php_fpm_packages:
-  - php5-fpm
-php_fpm_service: php5-fpm
-php_fpm_pool_file: /etc/php5/fpm/pool.d/www.conf
+  - php7.0-fpm
+php_fpm_service: php7.0-fpm
+php_fpm_pool_file: /etc/php/7.0/fpm/pool.d/www.conf

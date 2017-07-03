@@ -24,6 +24,7 @@ php_packages:
   - php7.1-imagick
 
 php_package_redis: php7.1-redis
+php_package_composer: composer
 
 php_config_dir_cli: /etc/php/7.1/cli/conf.d
 php_config_dir_fpm: /etc/php/7.1/fpm/conf.d
